@@ -7,17 +7,31 @@ const router = createBrowserRouter([
       const { default: AppShell } = await import("./dashboard/page");
       const { Outlet } = await import("react-router-dom");
       return {
-        Component: (props) => <AppShell {...props}><Outlet /></AppShell>,
+        Component: (props) => (
+          <AppShell {...props}>
+            <Outlet />
+          </AppShell>
+        ),
       };
     },
     children: [
       {
         index: true,
-        path: "/chat",
+        path: "/docs/chat",
         lazy: async () => {
           const { default: ChatComponent } = await import("./page/chat");
           return {
             Component: (props) => <ChatComponent {...props} />,
+          };
+        },
+      },
+      {
+        index: true,
+        path: "/models/:model-name",
+        lazy: async () => {
+          const { default: ModelComponent } = await import("./dashboard/models/page");
+          return {
+            Component: (props) => <ModelComponent {...props} />,
           };
         },
       },

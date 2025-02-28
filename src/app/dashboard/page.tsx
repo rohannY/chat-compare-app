@@ -15,8 +15,21 @@ import {
 } from "@/components/ui/sidebar";
 import { Shortcut } from "./shortcut";
 import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
+
+function toPascalCase(str: string) {
+  return str
+    .toLowerCase() // Convert everything to lowercase
+    .split(/[^a-zA-Z0-9]+/) // Split by non-alphanumeric characters
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+    .join(""); // Join without spaces
+}
 
 export default function Page({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  const path = location.pathname;
+  const parts = path.split("/");
+
   return (
     <>
       <SidebarProvider className="font-geist tracking-wide dark">
@@ -32,22 +45,19 @@ export default function Page({ children }: { children: ReactNode }) {
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="#">
-                      Building Your Application
+                    <BreadcrumbLink href="/models">
+                      {toPascalCase(parts[1])}
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
-                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                    <BreadcrumbPage> {toPascalCase(parts[2])}</BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
           </header>
-          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-            {/* Here you can render the children */}
-            {children}
-          </div>
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
         </SidebarInset>
       </SidebarProvider>
       <Shortcut />
