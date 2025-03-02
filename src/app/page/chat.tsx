@@ -8,7 +8,6 @@ import {
   ChevronDown,
   Copy,
   Check,
-  Send,
   Server,
   FileJson,
   Code,
@@ -17,7 +16,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   Tooltip,
-  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
@@ -49,7 +47,6 @@ const Chat: React.FC<ChatProps> = ({
   const [copySuccess, setCopySuccess] = useState<string | null>(null);
   const [formData, setFormData] = useState<Record<string, any>>({});
 
-  // Default request body fields
   const defaultRequestBodyFields: RequestBodyField[] = [
     {
       name: "provider",
@@ -77,7 +74,6 @@ const Chat: React.FC<ChatProps> = ({
     },
   ];
 
-  // Use provided fields or default fields
   const requestBodyFields = initialFields || defaultRequestBodyFields;
 
   const jsonExample = {
@@ -109,54 +105,54 @@ const Chat: React.FC<ChatProps> = ({
     curl: {
       language: "curl",
       code: `curl -X POST "${apiEndpoint}" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-  "provider": "string",
-  "model": "string",
-  "messages": [
-    {
-      "role": "string",
-      "content": "string"
-    }
-  ],
-  "chatRequestSettings": {
-    "temperature": 0,
-    "rememberHistory": true,
-    "maxTokens": 0,
-    "stream": true
-  }
-}'`,
+        -H "Content-Type: application/json" \\
+        -d '{
+        "provider": "string",
+        "model": "string",
+        "messages": [
+          {
+            "role": "string",
+            "content": "string"
+          }
+        ],
+        "chatRequestSettings": {
+          "temperature": 0,
+          "rememberHistory": true,
+          "maxTokens": 0,
+          "stream": true
+        }
+      }'`,
     },
     javascript: {
-      language: "javascript",
-      code: `const options = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    "provider": "string",
-    "model": "string",
-    "messages": [
-      {
-        "role": "string",
-        "content": "string"
-      }
-    ],
-    "chatRequestSettings": {
-      "temperature": 0,
-      "rememberHistory": true,
-      "maxTokens": 0,
-      "stream": true
-    }
-  })
-};
+          language: "javascript",
+          code: `const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "provider": "string",
+        "model": "string",
+        "messages": [
+          {
+            "role": "string",
+            "content": "string"
+          }
+        ],
+        "chatRequestSettings": {
+          "temperature": 0,
+          "rememberHistory": true,
+          "maxTokens": 0,
+          "stream": true
+        }
+      })
+    };
 
-fetch('${apiEndpoint}', options)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));`,
-    },
+    fetch('${apiEndpoint}', options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));`,
+        },
     python: {
       language: "python",
       code: `import requests
@@ -296,15 +292,8 @@ func main() {
     }
   };
 
-  const statusCodes = [
-    { code: 201, description: "Created", active: true },
-    { code: 400, description: "Bad Request", active: false },
-    { code: 404, description: "Not Found", active: false },
-    { code: 500, description: "Server Error", active: false },
-  ];
-
   return (
-    <div className="bg-[#0a0a0a] text-gray-300 py-8 px-8 md:px-6 lg:px-8 max-w-[1200px] mx-4">
+    <div className="bg-[#0a0a0a] text-gray-300 flex w-full flex-1 flex-col gap-6 px-4 pt-8 md:px-6 md:pt-12 xl:px-12 xl:mx-auto max-w-[1200px] max-sm:pb-16">
       <div className="flex items-center mb-3 py-4">
         <h1 className="text-4xl font-bold text-white">Chat API</h1>
       </div>
@@ -314,9 +303,9 @@ func main() {
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="flex flex-col rounded-xl overflow-hidden border border-gray-800 bg-[#111]">
+        <div className="flex flex-col rounded-xl overflow-hidden border border-gray-800 bg-[#111] h-fit">
           <div className="flex items-center gap-2 p-4 border-b border-gray-800 bg-[#151515]">
-            <Badge className="bg-blue-600 hover:bg-blue-700 rounded px-3 py-1 text-xs font-medium text-white">
+            <Badge className="bg-blue-600 hover:bg-blue-700 rounded px-3 py-1 text-xs font-medium text-white cursor-pointer">
               POST
             </Badge>
             <div className="text-gray-300 font-mono text-sm">{apiEndpoint}</div>
@@ -397,15 +386,6 @@ func main() {
                     <FieldInput field={field} />
                   </div>
                 ))}
-
-                <div className="pt-4 border-t border-gray-800">
-                  <Button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
-                  >
-                    <Send className="h-4 w-4" /> Send Request
-                  </Button>
-                </div>
               </div>
             </div>
           </form>
@@ -443,14 +423,14 @@ func main() {
               onValueChange={setActiveTab}
               className="w-full"
             >
-              <TabsList className="bg-[#151515] w-full justify-start p-0 h-auto border-b border-gray-800">
+              <TabsList className="bg-[#2c2c2c] w-full justify-start p-0 h-auto border-b border-gray-800 rounded-none">
                 {Object.keys(codeExamples).map((key) => (
                   <TabsTrigger
                     key={key}
                     value={key}
                     className={`px-4 py-2 rounded-none border-b-2 ${
                       activeTab === key
-                        ? "border-blue-500 text-white"
+                        ? "border-gray-400 text-white"
                         : "border-transparent text-gray-400"
                     }`}
                   >
@@ -485,33 +465,6 @@ func main() {
                 </TabsContent>
               ))}
             </Tabs>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold mb-4 text-white flex items-center">
-              Response Status Codes
-            </h2>
-            <div className="grid grid-cols-4 gap-2">
-              {statusCodes.map((status) => (
-                <div
-                  key={status.code}
-                  className={`p-3 rounded-md text-center cursor-pointer transition-colors ${
-                    status.active
-                      ? "bg-[#1a1a1a] border border-gray-700 text-white"
-                      : "bg-[#111] border border-gray-800 text-gray-500 hover:bg-[#151515]"
-                  }`}
-                >
-                  <div
-                    className={`font-medium ${
-                      status.active ? "text-white" : "text-gray-400"
-                    }`}
-                  >
-                    {status.code}
-                  </div>
-                  <div className="text-xs mt-1">{status.description}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="rounded-xl overflow-hidden border border-gray-800 bg-[#111]">

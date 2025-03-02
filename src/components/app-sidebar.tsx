@@ -4,15 +4,10 @@ import {
   BookOpen,
   Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
@@ -20,55 +15,39 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SidebarMenuButton,
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-// This is sample data.
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Documentation",
       isActive: true,
-      url: "",
+      url: "/docs",
       icon: BookOpen,
       items: [
         {
           title: "Chat",
           method: "Post",
-          url: "chat",
+          url: "/docs/chat",
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
+      title: "Supported Models",
+      isActive: true,
+      url: "/models",
       icon: Bot,
       items: [
         {
           title: "OpenAI",
-          url: "#",
+          url: "/models/openai",
           subitems: [
             { title: "GPT-4", url: "#" },
             { title: "GPT-3.5-Turbo", url: "#" },
@@ -79,7 +58,7 @@ const data = {
         },
         {
           title: "DeepSeek",
-          url: "#",
+          url: "/models/deepseek",
           subitems: [
             { title: "DeepSeek-Chat", url: "#" },
             { title: "DeepSeek-Reasoner", url: "#" },
@@ -87,7 +66,7 @@ const data = {
         },
         {
           title: "Anthropic",
-          url: "#",
+          url: "/models/anthropic",
           subitems: [
             { title: "Claude-3 Opus", url: "#" },
             { title: "Claude-3 Sonnet", url: "#" },
@@ -96,7 +75,7 @@ const data = {
         },
         {
           title: "QwenAI",
-          url: "#",
+          url: "/models/qwenai",
           subitems: [
             { title: "Qwen-Turbo", url: "#" },
             { title: "Qwen-Plus", url: "#" },
@@ -105,7 +84,7 @@ const data = {
         },
         {
           title: "Google",
-          url: "#",
+          url: "/models/google",
           subitems: [
             { title: "Gemini-1.5-Pro", url: "#" },
             { title: "Gemini-2.0-Flash", url: "#" },
@@ -114,7 +93,7 @@ const data = {
         },
         {
           title: "MistralAI",
-          url: "#",
+          url: "/models/mistralai",
           subitems: [
             { title: "Mistral-Small-Latest", url: "#" },
             { title: "Pixtral-12B-2409", url: "#" },
@@ -125,7 +104,7 @@ const data = {
         },
         {
           title: "XAI",
-          url: "#",
+          url: "/models/xai",
           subitems: [
             { title: "Grok-2-1212", url: "#" },
             { title: "Grok-2-Vision-1212", url: "#" },
@@ -133,7 +112,7 @@ const data = {
         },
         {
           title: "Perplexity",
-          url: "#",
+          url: "/models/perplexity",
           subitems: [
             { title: "Sonar", url: "#" },
             { title: "Sonar-Pro", url: "#" },
@@ -144,46 +123,6 @@ const data = {
         },
       ],
     },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
   ],
 };
 
@@ -191,11 +130,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props} className="dark">
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <div className="flex gap-2 text-sm font-medium">
+          <SidebarMenuButton
+            size="lg"
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
+          >
+            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+              <AudioWaveform className="size-4" />
+            </div>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">Chat Comparer</span>
+              <span className="truncate text-xs">Documentation</span>
+            </div>
+          </SidebarMenuButton>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

@@ -21,6 +21,11 @@ const router = createBrowserRouter([
             <Outlet />
           </AppShell>
         ),
+        Component: (props) => (
+          <AppShell {...props}>
+            <Outlet />
+          </AppShell>
+        ),
       };
     },
     children: [
@@ -30,6 +35,16 @@ const router = createBrowserRouter([
           const { default: ChatComponent } = await import("./page/chat");
           return {
             Component: (props) => <ChatComponent {...props} />,
+          };
+        },
+      },
+      {
+        index: true,
+        path: "/models/:model-name",
+        lazy: async () => {
+          const { default: ModelComponent } = await import("./dashboard/models/page");
+          return {
+            Component: (props) => <ModelComponent {...props} />,
           };
         },
       },
