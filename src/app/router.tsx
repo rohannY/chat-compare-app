@@ -4,16 +4,28 @@ const router = createBrowserRouter([
   {
     path: "/",
     lazy: async () => {
+      const { default: Landing } = await import("./landing/index");
+      return {
+        Component: (props) => <Landing {...props} />,
+      };
+    },
+  },
+  {
+    path: "/dashboard",
+    lazy: async () => {
       const { default: AppShell } = await import("./dashboard/page");
       const { Outlet } = await import("react-router-dom");
       return {
-        Component: (props) => <AppShell {...props}><Outlet /></AppShell>,
+        Component: (props) => (
+          <AppShell {...props}>
+            <Outlet />
+          </AppShell>
+        ),
       };
     },
     children: [
       {
         index: true,
-        path: "/chat",
         lazy: async () => {
           const { default: ChatComponent } = await import("./page/chat");
           return {

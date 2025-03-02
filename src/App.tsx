@@ -1,7 +1,7 @@
 import Page from "./app/dashboard/page";
 
 function App() {
-  return <Page />;
+  return <Page children={undefined} />;
 }
 
 export default App;
