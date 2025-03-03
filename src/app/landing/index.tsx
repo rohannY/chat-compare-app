@@ -28,9 +28,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-geist">
+    <div className="min-h-screen bg-background text-foreground font-geist p-[2rem] max-w-[1280px] mx-auto">
       <Navbar />
-      <main>
+      <main className='pt-10'>
         <Hero />
         <Features />
         <AIFeatures />

@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
-import { MessageSquare, Github, Twitter, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  MessageSquare,
+  Github,
+  Twitter,
+  Linkedin,
+  Mail,
+  ArrowUp,
+} from "lucide-react";
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
-  
-  const handleSubscribe = (e:any) => {
+
+  const handleSubscribe = (e: any) => {
     e.preventDefault();
     if (email) {
       setIsSubscribed(true);
-      setEmail('');
+      setEmail("");
       // In a real app, you would send this to your API
       setTimeout(() => setIsSubscribed(false), 3000);
     }
   };
-  
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -29,44 +36,25 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-5">
             <div className="flex items-center space-x-2 mb-4 group">
               <MessageSquare className="w-6 h-6 text-primary transition-all duration-300 group-hover:scale-110" />
-              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300">ChatCompare</span>
+              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300">
+                ChatCompare
+              </span>
             </div>
-            <p className="text-gray-600 mb-6 max-w-md">
-              Compare responses from the world's leading AI models to find the perfect assistant for your needs.
+            <p className="text-gray-600 mb-6 max-w-md text-start">
+              Compare responses from the world's leading AI models to find the
+              perfect assistant for your needs.
             </p>
-            
-            <div className="mb-8">
-              <h4 className="text-sm font-medium mb-3">Stay updated with our newsletter</h4>
-              <form onSubmit={handleSubscribe} className="flex">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full max-w-xs"
-                />
-                <button 
-                  type="submit" 
-                  className="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary/90 transition-colors duration-300"
-                >
-                  Subscribe
-                </button>
-              </form>
-              {isSubscribed && (
-                <p className="text-green-600 text-sm mt-2 animate-fadeIn">Thanks for subscribing!</p>
-              )}
-            </div>
-            
+
             <div className="flex space-x-4">
               {[
                 { icon: Twitter, label: "Twitter" },
                 { icon: Github, label: "GitHub" },
                 { icon: Linkedin, label: "LinkedIn" },
-                { icon: Mail, label: "Email" }
+                { icon: Mail, label: "Email" },
               ].map((item, i) => (
-                <a 
+                <a
                   key={i}
-                  href="#" 
+                  href="#"
                   aria-label={item.label}
                   className="text-gray-500 hover:text-primary transition-all duration-300 hover:scale-110 transform"
                 >
@@ -75,57 +63,71 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+          <div className="col-span-3"></div>
           <div className="col-span-1 md:col-span-2">
-            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">Product</h3>
+            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">
+              Product
+            </h3>
             <ul className="space-y-3">
-              {['Features', 'Pricing', 'Integrations', 'API', 'Documentation'].map((item, i) => (
-                <li key={i} className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300">
-                  <a href="#" className="text-gray-600 hover:text-primary transition-colors text-sm inline-block">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">Company</h3>
-            <ul className="space-y-3">
-              {['About', 'Blog', 'Careers', 'Privacy Policy', 'Terms of Service'].map((item, i) => (
-                <li key={i} className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300">
-                  <a href="#" className="text-gray-600 hover:text-primary transition-colors text-sm inline-block">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="col-span-1 md:col-span-3">
-            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">Supported Models</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {['Claude', 'ChatGPT', 'Gemini', 'Llama', 'Mistral', 'GPT-4'].map((model, i) => (
-                <span 
-                  key={i} 
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 hover:bg-primary/10 transition-colors duration-300"
+              {[
+                "Features",
+                "Pricing",
+                "Integrations",
+                "API",
+                "Documentation",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300"
                 >
-                  {model}
-                </span>
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-primary transition-colors text-sm inline-block"
+                  >
+                    {item}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">
+              Company
+            </h3>
+            <ul className="space-y-3">
+              {[
+                "About",
+                "Blog",
+                "Careers",
+                "Privacy Policy",
+                "Terms of Service",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300"
+                >
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-primary transition-colors text-sm inline-block"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-500">
             © {new Date().getFullYear()} ChatCompare. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
-            {['Privacy', 'Terms', 'Cookies', 'Sitemap'].map((item, i) => (
-              <a 
+            {["Privacy", "Terms", "Cookies", "Sitemap"].map((item, i) => (
+              <a
                 key={i}
-                href="#" 
+                href="#"
                 className="text-sm text-gray-500 hover:text-primary transition-colors duration-300"
               >
                 {item}
@@ -134,8 +136,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
-      <button 
+
+      <button
         onClick={scrollToTop}
         className="fixed bottom-8 right-8 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
         aria-label="Scroll to top"

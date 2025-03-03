@@ -11,16 +11,11 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: "/dashboard",
+    path: "/docs",
     lazy: async () => {
       const { default: AppShell } = await import("./dashboard/page");
       const { Outlet } = await import("react-router-dom");
       return {
-        Component: (props) => (
-          <AppShell {...props}>
-            <Outlet />
-          </AppShell>
-        ),
         Component: (props) => (
           <AppShell {...props}>
             <Outlet />
@@ -39,10 +34,11 @@ const router = createBrowserRouter([
         },
       },
       {
-        index: true,
-        path: "/models/:model-name",
+        path: "models/:model-name",
         lazy: async () => {
-          const { default: ModelComponent } = await import("./dashboard/models/page");
+          const { default: ModelComponent } = await import(
+            "./dashboard/models/page"
+          );
           return {
             Component: (props) => <ModelComponent {...props} />,
           };

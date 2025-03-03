@@ -103,43 +103,6 @@ const Features = () => {
     >
       {/* Enhanced animated background */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <motion.div
-          className="absolute inset-0"
-          style={{ x: backgroundX, y: backgroundY }}
-          initial={{ opacity: 0.2 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        >
-          {Array.from({ length: 60 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full"
-              style={{
-                width: Math.random() * 30 + 5,
-                height: Math.random() * 30 + 5,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                background:
-                  i % 5 === 0
-                    ? `radial-gradient(circle, ${
-                        features[i % features.length].primaryColor
-                      }20 0%, transparent 70%)`
-                    : "rgba(255, 255, 255, 0.03)",
-              }}
-              animate={{
-                x: [0, Math.random() * 150 - 75],
-                y: [0, Math.random() * 150 - 75],
-                opacity: [0.1, 0.4, 0.1],
-                scale: [1, Math.random() * 0.5 + 0.8, 1],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: Math.random() * 20 + 15,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black rounded-xl"></div>
       </div>
 
@@ -320,12 +283,9 @@ const Features = () => {
                       scale: isExpanded ? 0 : 1,
                       opacity: isExpanded ? 0 : 1,
                     }}
-                    transition={{ duration: 0.4 }}
                   >
                     <motion.div
                       animate={{
-                        rotate: isActive ? [0, 10, 0] : 0,
-                        scale: isActive ? [1, 1.2, 1] : 1,
                         color: isActive ? feature.primaryColor : "#9ca3af",
                       }}
                       transition={{

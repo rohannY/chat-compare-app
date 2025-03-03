@@ -297,7 +297,7 @@ func main() {
       <div className="flex items-center mb-3 py-4">
         <h1 className="text-4xl font-bold text-white">Chat API</h1>
       </div>
-      <p className="text-gray-400 text-base mb-6">
+      <p className="text-gray-400 text-base mb-6 text-start">
         Provides an API for AI chat interaction—send messages, get responses,
         and configure models.
       </p>

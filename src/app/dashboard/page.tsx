@@ -32,7 +32,7 @@ export default function Page({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <SidebarProvider className="font-geist tracking-wide dark">
+      <SidebarProvider className="font-geist tracking-wide dark max-w-full">
         <AppSidebar />
         <SidebarInset>
           <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
@@ -46,12 +46,12 @@ export default function Page({ children }: { children: ReactNode }) {
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
                     <BreadcrumbLink href="/models">
-                      {toPascalCase(parts[1])}
+                      {/* {toPascalCase(parts[1])} */}
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
-                    <BreadcrumbPage> {toPascalCase(parts[2])}</BreadcrumbPage>
+                    {/* <BreadcrumbPage> {toPascalCase(parts[2])}</BreadcrumbPage> */}
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>

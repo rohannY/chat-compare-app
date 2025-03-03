@@ -32,17 +32,17 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center gap-2">
-          <a href="#features" className="nav-link">
+        <div className="hidden md:flex items-center gap-4">
+          <a href="#features">
             Features
           </a>
-          <a href="#compare" className="nav-link">
+          <a href="#compare">
             Compare
           </a>
-          <a href="#pricing" className="nav-link">
-            Pricing
+          <a href="/docs">
+            Docs
           </a>
-          <a href="#faq" className="nav-link">
+          <a href="#faq">
             FAQ
           </a>
         </div>
