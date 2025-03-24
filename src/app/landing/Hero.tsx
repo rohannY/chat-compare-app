@@ -39,7 +39,7 @@ const Hero = () => {
       animate(motionValue, range, {
         repeat: Infinity,
         repeatType: "mirror",
-        duration: 5 + Math.random() * 3, // Randomized duration for variation
+        duration: 5 + Math.random() * 3,
         ease: "easeInOut",
       });
     };

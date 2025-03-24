@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   MessageSquare,
   Github,
@@ -6,21 +5,14 @@ import {
   Linkedin,
   Mail,
   ArrowUp,
+  Moon,
+  Sun,
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const handleSubscribe = (e: any) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setEmail("");
-      // In a real app, you would send this to your API
-      setTimeout(() => setIsSubscribed(false), 3000);
-    }
-  };
+  const { theme, setTheme } = useTheme();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -29,18 +21,51 @@ const Footer = () => {
     });
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
+    },
+  };
+
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="col-span-1 md:col-span-5">
-            <div className="flex items-center space-x-2 mb-4 group">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-12 gap-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className="col-span-1 md:col-span-5" variants={itemVariants}>
+            <motion.div 
+              className="flex items-center space-x-2 mb-4 group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               <MessageSquare className="w-6 h-6 text-primary transition-all duration-300 group-hover:scale-110" />
-              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300">
+              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300 dark:text-white">
                 ChatCompare
               </span>
-            </div>
-            <p className="text-gray-600 mb-6 max-w-md text-start">
+            </motion.div>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md text-start">
               Compare responses from the world's leading AI models to find the
               perfect assistant for your needs.
             </p>
@@ -52,20 +77,35 @@ const Footer = () => {
                 { icon: Linkedin, label: "LinkedIn" },
                 { icon: Mail, label: "Email" },
               ].map((item, i) => (
-                <a
+                <motion.a
                   key={i}
                   href="#"
                   aria-label={item.label}
-                  className="text-gray-500 hover:text-primary transition-all duration-300 hover:scale-110 transform"
+                  className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-300"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <item.icon className="w-5 h-5" />
-                </a>
+                </motion.a>
               ))}
+              <motion.button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-300"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
           <div className="col-span-3"></div>
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">
+          <motion.div className="col-span-1 md:col-span-2" variants={itemVariants}>
+            <h3 className="font-medium text-sm uppercase text-gray-500 dark:text-gray-400 mb-4">
               Product
             </h3>
             <ul className="space-y-3">
@@ -76,23 +116,24 @@ const Footer = () => {
                 "API",
                 "Documentation",
               ].map((item, i) => (
-                <li
+                <motion.li
                   key={i}
-                  className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   <a
                     href="#"
-                    className="text-gray-600 hover:text-primary transition-colors text-sm inline-block"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm inline-block"
                   >
                     {item}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="font-medium text-sm uppercase text-gray-500 mb-4">
+          <motion.div className="col-span-1 md:col-span-2" variants={itemVariants}>
+            <h3 className="font-medium text-sm uppercase text-gray-500 dark:text-gray-400 mb-4">
               Company
             </h3>
             <ul className="space-y-3">
@@ -103,47 +144,61 @@ const Footer = () => {
                 "Privacy Policy",
                 "Terms of Service",
               ].map((item, i) => (
-                <li
+                <motion.li
                   key={i}
-                  className="transform translate-x-0 hover:translate-x-1 transition-transform duration-300"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   <a
                     href="#"
-                    className="text-gray-600 hover:text-primary transition-colors text-sm inline-block"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm inline-block"
                   >
                     {item}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-500">
+        <motion.div 
+          className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             © {new Date().getFullYear()} ChatCompare. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             {["Privacy", "Terms", "Cookies", "Sitemap"].map((item, i) => (
-              <a
+              <motion.a
                 key={i}
                 href="#"
-                className="text-sm text-gray-500 hover:text-primary transition-colors duration-300"
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 {item}
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <button
+      <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+        className="fixed bottom-8 right-8 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 dark:bg-primary/80 dark:hover:bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
         aria-label="Scroll to top"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <ArrowUp className="w-5 h-5" />
-      </button>
+      </motion.button>
     </footer>
   );
 };

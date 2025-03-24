@@ -157,7 +157,10 @@ const AIFeatures = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
-            Make Informed AI Decisions
+            Make Informed{" "}
+            <span className="border-b-4 border-gradient-to-r from-blue-500 to-purple-500">
+              AI Decisions
+            </span>
             <motion.span
               className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
               initial={{ width: 0 }}
@@ -217,7 +220,7 @@ const AIFeatures = () => {
                   whileHover={{ x: 5 }}
                 >
                   <motion.span
-                    className="flex-shrink-0 h-6 w-6 rounded-full bg-gradient-to-r from-green-700 to-blue-400 flex items-center justify-center mr-3"
+                    className="flex-shrink-0 h-6 w-6 rounded-full bg-gradient-to-br from-rose-400 to-orange-300 flex items-center justify-center shadow-md mr-3"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 500 }}
                   >
