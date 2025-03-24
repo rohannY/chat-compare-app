@@ -44,7 +44,7 @@ const data = {
       items: [
         {
           title: "OpenAI",
-          url: "/models/openai",
+          url: "/docs/models/openai",
           subitems: [
             { title: "GPT-4", url: "#" },
             { title: "GPT-3.5-Turbo", url: "#" },
@@ -55,7 +55,7 @@ const data = {
         },
         {
           title: "DeepSeek",
-          url: "/models/deepseek",
+          url: "/docs/models/deepseek",
           subitems: [
             { title: "DeepSeek-Chat", url: "#" },
             { title: "DeepSeek-Reasoner", url: "#" },
@@ -63,7 +63,7 @@ const data = {
         },
         {
           title: "Anthropic",
-          url: "/models/anthropic",
+          url: "/docs/models/anthropic",
           subitems: [
             { title: "Claude-3 Opus", url: "#" },
             { title: "Claude-3 Sonnet", url: "#" },
@@ -72,7 +72,7 @@ const data = {
         },
         {
           title: "QwenAI",
-          url: "/models/qwenai",
+          url: "/docs/models/qwenai",
           subitems: [
             { title: "Qwen-Turbo", url: "#" },
             { title: "Qwen-Plus", url: "#" },
@@ -81,7 +81,7 @@ const data = {
         },
         {
           title: "Google",
-          url: "/models/google",
+          url: "/docs/models/google",
           subitems: [
             { title: "Gemini-1.5-Pro", url: "#" },
             { title: "Gemini-2.0-Flash", url: "#" },
@@ -90,7 +90,7 @@ const data = {
         },
         {
           title: "MistralAI",
-          url: "/models/mistralai",
+          url: "/docs/models/mistralai",
           subitems: [
             { title: "Mistral-Small-Latest", url: "#" },
             { title: "Pixtral-12B-2409", url: "#" },
@@ -101,7 +101,7 @@ const data = {
         },
         {
           title: "XAI",
-          url: "/models/xai",
+          url: "/docs/models/xai",
           subitems: [
             { title: "Grok-2-1212", url: "#" },
             { title: "Grok-2-Vision-1212", url: "#" },
@@ -109,7 +109,7 @@ const data = {
         },
         {
           title: "Perplexity",
-          url: "/models/perplexity",
+          url: "/docs/models/perplexity",
           subitems: [
             { title: "Sonar", url: "#" },
             { title: "Sonar-Pro", url: "#" },

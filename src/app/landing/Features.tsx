@@ -11,7 +11,6 @@ import {
   Scale,
   Zap,
   BarChart,
-  ArrowRight,
   ChevronRight,
 } from "lucide-react";
 
@@ -313,23 +312,6 @@ const Features = () => {
             );
           })}
         </div>
-
-        {/* CTA Section */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <motion.button
-            className="px-6 py-3 bg-white/10 rounded-lg font-medium flex items-center gap-2 mx-auto hover:bg-white/20 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Explore all features
-            <ArrowRight className="w-4 h-4" />
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );

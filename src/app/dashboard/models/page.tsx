@@ -175,8 +175,10 @@ export default function ModelsPage() {
                 }}
               />
             </div>
-            <div>
-              <h1 className="text-3xl font-bold dark:text-white">{selectedProvider.name}</h1>
+            <div className="px-4 space-y-2">
+              <h1 className="text-3xl font-bold dark:text-white text-start">
+                {selectedProvider.name}
+              </h1>
               <p className="text-gray-500">{selectedProvider.description}</p>
             </div>
           </div>
@@ -205,13 +207,6 @@ export default function ModelsPage() {
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter>
-                  <Button asChild variant="ghost" className="w-full">
-                    <Link to={`/models/${selectedProvider.id}/${model.id}`}>
-                      View Details
-                    </Link>
-                  </Button>
-                </CardFooter>
               </Card>
             ))}
           </div>

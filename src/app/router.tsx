@@ -27,6 +27,16 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => {
+          const { default: IntroComponent } = await import("./page/intro");
+          return {
+            Component: (props) => <IntroComponent {...props} />,
+          };
+        },
+      },
+      {
+        path: "/docs/chat",
+        index: true,
+        lazy: async () => {
           const { default: ChatComponent } = await import("./page/chat");
           return {
             Component: (props) => <ChatComponent {...props} />,
@@ -34,7 +44,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "models/:model-name",
+        path: "/docs/models/:model-name",
         lazy: async () => {
           const { default: ModelComponent } = await import(
             "./dashboard/models/page"

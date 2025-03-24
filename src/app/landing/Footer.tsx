@@ -40,32 +40,35 @@ const Footer = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5 },
     },
   };
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <footer className="bg-gray-50 dark:bg-neutral-900 rounded-b-2xl dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-12 gap-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <motion.div className="col-span-1 md:col-span-5" variants={itemVariants}>
-            <motion.div 
+          <motion.div
+            className="col-span-1 md:col-span-5"
+            variants={itemVariants}
+          >
+            <motion.div
               className="flex items-center space-x-2 mb-4 group"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <MessageSquare className="w-6 h-6 text-primary transition-all duration-300 group-hover:scale-110" />
-              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300 dark:text-white">
+              <span className="font-semibold text-xl group-hover:text-primary transition-colors duration-300 dark:text-neutral-100">
                 ChatCompare
               </span>
             </motion.div>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md text-start">
+            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md text-start">
               Compare responses from the world's leading AI models to find the
               perfect assistant for your needs.
             </p>
@@ -103,8 +106,13 @@ const Footer = () => {
               </motion.button>
             </div>
           </motion.div>
+
           <div className="col-span-3"></div>
-          <motion.div className="col-span-1 md:col-span-2" variants={itemVariants}>
+
+          <motion.div
+            className="col-span-1 md:col-span-2"
+            variants={itemVariants}
+          >
             <h3 className="font-medium text-sm uppercase text-gray-500 dark:text-gray-400 mb-4">
               Product
             </h3>
@@ -132,7 +140,10 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          <motion.div className="col-span-1 md:col-span-2" variants={itemVariants}>
+          <motion.div
+            className="col-span-1 md:col-span-2"
+            variants={itemVariants}
+          >
             <h3 className="font-medium text-sm uppercase text-gray-500 dark:text-gray-400 mb-4">
               Company
             </h3>
@@ -161,8 +172,8 @@ const Footer = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
-          className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        <motion.div
+          className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -122,13 +122,13 @@ const AIFeatures = () => {
   return (
     <section
       id="compare"
-      className="py-20 md:py-32 bg-gray-50 relative overflow-hidden"
+      className="py-20 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 relative overflow-hidden dark:rounded-t-2xl"
     >
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-40 dark:opacity-20">
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-purple-500 to-blue-200"
+            className="absolute rounded-full bg-gradient-to-r from-purple-500 to-blue-200 dark:from-purple-700 dark:to-blue-500"
             style={{
               width: Math.random() * 300 + 50,
               height: Math.random() * 300 + 50,
@@ -156,9 +156,9 @@ const AIFeatures = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block dark:text-white">
             Make Informed{" "}
-            <span className="border-b-4 border-gradient-to-r from-blue-500 to-purple-500">
+            <span className="border-b-4 border-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400">
               AI Decisions
             </span>
             <motion.span
@@ -168,7 +168,7 @@ const AIFeatures = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
             />
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-neutral-300 max-w-2xl mx-auto">
             Different AI models have unique strengths and limitations.
             ChatCompare helps you identify which model excels at your specific
             tasks.
@@ -183,12 +183,15 @@ const AIFeatures = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h3
-              className="text-2xl md:text-3xl font-bold mb-4"
+              className="text-2xl md:text-3xl font-bold mb-4 dark:text-white"
               variants={itemVariants}
             >
               Optimize Your AI Workflow
             </motion.h3>
-            <motion.p className="text-gray-600 mb-6" variants={itemVariants}>
+            <motion.p
+              className="text-gray-600 dark:text-neutral-400 mb-6"
+              variants={itemVariants}
+            >
               Stop wasting time with the wrong AI tools. Our platform lets you
               compare all major AI models side-by-side to find the perfect fit
               for your needs.
@@ -226,7 +229,9 @@ const AIFeatures = () => {
                   >
                     {item.icon}
                   </motion.span>
-                  <span className="text-gray-700">{item.text}</span>
+                  <span className="text-gray-700 dark:text-neutral-300">
+                    {item.text}
+                  </span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -253,10 +258,10 @@ const AIFeatures = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             onMouseMove={handleMouseMove}
           >
-            <AnimatedGradient className="absolute -inset-4 rounded-xl opacity-20 blur-xl -z-10" />
+            <AnimatedGradient className="absolute -inset-4 rounded-xl opacity-20 blur-2xl -z-10 dark:opacity-30" />
 
             <motion.div
-              className="glass-panel p-6 md:p-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg"
+              className="glass-panel p-6 md:p-8 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-xl shadow-lg"
               style={{
                 background: `linear-gradient(${gradientPosition}, rgba(255,255,255,0.97), rgba(245,245,250,0.97))`,
               }}
@@ -269,9 +274,9 @@ const AIFeatures = () => {
                   whileHover={{ rotate: 15 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <BarChart2 className="w-5 h-5 text-blue-500 mr-2" />
+                  <BarChart2 className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
                 </motion.div>
-                <h4 className="font-semibold text-gray-800">
+                <h4 className="font-semibold text-gray-800 dark:text-neutral-200">
                   AI Model Performance
                 </h4>
               </div>
@@ -284,7 +289,7 @@ const AIFeatures = () => {
                   exit={{ opacity: 0, y: -20 }}
                   className="space-y-4"
                 >
-                  <div className="grid grid-cols-5 gap-2 text-xs font-medium text-gray-500 pb-2 border-b">
+                  <div className="grid grid-cols-5 gap-2 text-xs font-medium text-gray-500 dark:text-neutral-400 pb-2 border-b dark:border-neutral-700">
                     <div className="col-span-1">Model</div>
                     <div className="col-span-1">Best For</div>
                     <div className="col-span-1">Strengths</div>
@@ -295,7 +300,7 @@ const AIFeatures = () => {
                   {models.map((model, i) => (
                     <motion.div
                       key={i}
-                      className="grid grid-cols-5 gap-2 py-2 text-xs"
+                      className="grid grid-cols-5 gap-2 py-2 text-xs text-gray-700 dark:text-neutral-300"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -323,7 +328,7 @@ const AIFeatures = () => {
                       </div>
                       <div className="col-span-1">
                         <motion.div
-                          className="h-1.5 bg-gray-200 rounded-full overflow-hidden"
+                          className="h-1.5 dark:bg-neutral-700 bg-gray-200 rounded-full overflow-hidden"
                           whileInView={{ scale: [0.9, 1] }}
                           viewport={{ once: true }}
                         >
