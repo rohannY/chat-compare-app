@@ -1,4 +1,3 @@
-import * as React from "react";
 import { toast as sonnerToast } from "sonner";
 
 function toast(props: Parameters<typeof sonnerToast>[0]) {

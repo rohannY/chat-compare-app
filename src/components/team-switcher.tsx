@@ -19,7 +19,7 @@ export function TeamSwitcher({
     plan: string;
   }[];
 }) {
-  const [activeTeam, setActiveTeam] = React.useState(teams[0]);
+  const [activeTeam] = React.useState(teams[0]);
 
   return (
     <SidebarMenu className="dark">

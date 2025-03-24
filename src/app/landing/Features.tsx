@@ -4,7 +4,6 @@ import {
   AnimatePresence,
   useInView,
   useMotionValue,
-  useTransform,
 } from "framer-motion";
 import {
   MessageSquare,
@@ -12,8 +11,6 @@ import {
   Scale,
   Zap,
   BarChart,
-  RefreshCw,
-  Mail,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
@@ -90,9 +87,6 @@ const Features = () => {
       primaryColor: "#a855f7",
     },
   ];
-
-  const backgroundX = useTransform(mouseX, [0, 1], [10, -10]);
-  const backgroundY = useTransform(mouseY, [0, 1], [10, -10]);
 
   return (
     <section

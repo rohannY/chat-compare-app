@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Command,
@@ -8,8 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { Search, ArrowRight, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, ArrowRight } from "lucide-react";
 
 export const Shortcut = () => {
   const [open, setOpen] = useState(false);

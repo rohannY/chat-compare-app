@@ -4,7 +4,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
@@ -15,21 +14,8 @@ import {
 } from "@/components/ui/sidebar";
 import { Shortcut } from "./shortcut";
 import { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
-
-function toPascalCase(str: string) {
-  return str
-    .toLowerCase() // Convert everything to lowercase
-    .split(/[^a-zA-Z0-9]+/) // Split by non-alphanumeric characters
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(""); // Join without spaces
-}
 
 export default function Page({ children }: { children: ReactNode }) {
-  const location = useLocation();
-  const path = location.pathname;
-  const parts = path.split("/");
-
   return (
     <>
       <SidebarProvider className="font-geist tracking-wide dark max-w-full">

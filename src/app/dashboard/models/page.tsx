@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -17,7 +17,6 @@ import providers from "./models";
 
 export default function ModelsPage() {
   const location = useLocation();
-  const params = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProvider, setSelectedProvider] = useState<{
     id: string;
