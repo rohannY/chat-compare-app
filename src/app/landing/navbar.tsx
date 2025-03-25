@@ -45,7 +45,7 @@ const Navbar = () => {
           : "bg-transparent dark:bg-black"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
         <div className="flex items-center">
           <div className="flex items-center space-x-1 font-medium text-xl">
             <img src={logo} className="w-6 h-6 text-primary" />
@@ -79,14 +79,14 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Button
             size="sm"
-            className="bg-primary/90 hover:bg-primary dark:bg-neutral-800"
+            className="bg-primary/90 hover:bg-primary dark:bg-neutral-800 cursor-pointer"
           >
             Get Started
           </Button>
           {mounted && (
             <Button
               size="sm"
-              className="rounded-lg cursor-pointer relative overflow-hidden w-8 h-8 p-0"
+              className="rounded-lg cursor-pointer relative overflow-hidden w-8 h-8 p-0 border border-gray-200 dark:border-gray-800 dark:bg-black/90 dark:text-white"
               variant="outline"
               onClick={toggleTheme}
               aria-label="Toggle theme"

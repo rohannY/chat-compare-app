@@ -30,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="dark:bg-black">
-      <div className="min-h-screen bg-background text-foreground font-geist p-[2rem] max-w-[1280px] mx-auto dark:bg-black/80 border-dotted border-[#11101014] dark:border-[#ffffff14] border-x-2 space-y-2 font-Geist">
+      <div className="min-h-screen bg-background text-foreground font-satoshi p-[2rem] max-w-[1280px] mx-auto dark:bg-black/80 border-dotted border-[#11101014] dark:border-[#ffffff14] border-x-2 space-y-2">
         <Navbar />
         <main className="pt-10">
           <Hero />
