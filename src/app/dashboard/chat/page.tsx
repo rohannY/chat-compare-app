@@ -293,11 +293,11 @@ func main() {
   };
 
   return (
-    <div className="bg-[#0a0a0a] text-gray-300 flex w-full flex-1 flex-col gap-6 px-4 pt-8 md:px-6 md:pt-12 xl:px-12 xl:mx-auto max-w-[1200px] max-sm:pb-16">
-      <div className="flex items-center mb-3 py-4">
-        <h1 className="text-4xl font-bold text-white">Chat API</h1>
+    <div className="bg-[#0a0a0a] text-gray-300 flex w-full flex-1 flex-col gap-6 px-6 xl:mx-auto max-w-[1280px] max-sm:pb-16">
+      <div className="flex items-center py-4">
+        <h1 className="text-3xl font-bold text-white">Chat API</h1>
       </div>
-      <p className="text-gray-400 text-base mb-6 text-start">
+      <p className="text-muted-foreground text-base text-start">
         Provides an API for AI chat interaction—send messages, get responses,
         and configure models.
       </p>

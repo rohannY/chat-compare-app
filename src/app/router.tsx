@@ -13,48 +13,35 @@ const router = createBrowserRouter([
   {
     path: "/docs",
     lazy: async () => {
-      const { default: AppShell } = await import("./dashboard/layout");
-      const { Outlet } = await import("react-router-dom");
-      return {
-        Component: (props) => (
-          <AppShell {...props}>
-            <Outlet />
-          </AppShell>
-        ),
-      };
+      const AppShell = await import("./dashboard/layout");
+      return { Component: AppShell.default };
     },
     children: [
       {
         index: true,
-        lazy: async () => {
-          const { default: IntroComponent } = await import("./dashboard/intro/page");
-          return {
-            Component: (props) => <IntroComponent {...props} />,
-          };
-        },
+        lazy: async () => ({
+          Component: (await import("./dashboard/intro/page")).default,
+        }),
       },
       {
         path: "/docs/chat",
-        index: true,
-        lazy: async () => {
-          const { default: ChatComponent } = await import("./dashboard/chat/page");
-          return {
-            Component: (props) => <ChatComponent {...props} />,
-          };
-        },
+        lazy: async () => ({
+          Component: (await import("./dashboard/chat/page")).default,
+        }),
       },
       {
         path: "/docs/models/:model-name",
-        lazy: async () => {
-          const { default: ModelComponent } = await import(
-            "./dashboard/models/page"
-          );
-          return {
-            Component: (props) => <ModelComponent {...props} />,
-          };
-        },
+        lazy: async () => ({
+          Component: (await import("./dashboard/models/page")).default,
+        }),
       },
     ],
+  },
+  {
+    path: "*",
+    lazy: async () => ({
+      Component: (await import("./not-found")).default,
+    }),
   },
 ]);
 
