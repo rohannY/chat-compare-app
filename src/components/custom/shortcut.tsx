@@ -18,27 +18,27 @@ export const Shortcut = () => {
   const searchResults = [
     {
       id: 1,
-      title: "Getting Started",
-      description: "Introduction and setup guide",
-      href: "/docs/getting-started",
+      title: "Documentation Overview",
+      description: "Comprehensive guide to getting started with our platform",
+      href: "/docs",
     },
     {
       id: 2,
-      title: "Components",
-      description: "Overview of all UI components",
-      href: "/docs/components",
+      title: "Chat API Integration",
+      description: "Detailed documentation for implementing and using the Chat API",
+      href: "/docs/chat",
     },
     {
       id: 3,
-      title: "Button",
-      description: "Interactive button component",
-      href: "/docs/components/button",
+      title: "OpenAI Model Guide",
+      description: "Comprehensive overview of OpenAI model capabilities and implementation",
+      href: "/docs/models/openai",
     },
     {
       id: 4,
-      title: "Dialog",
-      description: "Modal dialog component",
-      href: "/docs/components/dialog",
+      title: "Claude Model Integration",
+      description: "In-depth guide to integrating and utilizing Claude AI models",
+      href: "/docs/models/claude",
     },
   ];
 
