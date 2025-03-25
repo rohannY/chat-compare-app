@@ -11,8 +11,10 @@ import {
   Scale,
   Zap,
   BarChart,
+  ChevronDown,
   ChevronRight,
 } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Features = () => {
   const [expandedTile, setExpandedTile] = useState<number | null>(null);
@@ -21,7 +23,10 @@ const Features = () => {
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
+  const [openFeatureIndex, setOpenFeatureIndex] = useState<number | null>(null);
+  const toggleFeature = (index: number) => {
+    setOpenFeatureIndex(openFeatureIndex === index ? null : index);
+  };
   // Auto-rotate feature highlights
   useEffect(() => {
     if (expandedTile === null) {
@@ -87,6 +92,8 @@ const Features = () => {
     },
   ];
 
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="features"
@@ -147,7 +154,71 @@ const Features = () => {
           </motion.p>
         </motion.div>
 
-        <div className="flex flex-row flex-wrap justify-center gap-3 md:gap-4">
+        <div
+          className={`flex flex-row flex-wrap justify-center gap-3 md:gap-4 ${
+            isMobile ? "block" : "hidden"
+          }`}
+          id="mobile"
+        >
+          <div className="max-w-2xl mx-auto w-md lg:w-lg xl:w-xl">
+            <div className="space-y-4">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: index * 0.1,
+                    duration: 0.5,
+                  }}
+                  className={`rounded-xl border border-white/10 overflow-hidden ${feature.color}`}
+                >
+                  <div
+                    onClick={() => toggleFeature(index)}
+                    className="flex justify-between items-center p-4 cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-3">
+                      {feature.icon}
+                      <span className="font-semibold">{feature.title}</span>
+                    </div>
+                    {openFeatureIndex === index ? (
+                      <ChevronDown className="w-5 h-5 text-gray-400" />
+                    ) : (
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                    )}
+                  </div>
+
+                  <AnimatePresence>
+                    {openFeatureIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{
+                          opacity: 1,
+                          height: "auto",
+                          transition: { duration: 0.3 },
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                          transition: { duration: 0.2 },
+                        }}
+                        className="px-4 pb-4"
+                      >
+                        <p className="text-sm text-gray-300 mt-2 text-start">
+                          {feature.description}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={`flex flex-row flex-wrap justify-center gap-3 md:gap-4 ${isMobile ? "hidden" : "block"}`}
+        >
           {features.map((feature, index) => {
             const isExpanded = expandedTile === index;
             const isActive =
@@ -242,7 +313,7 @@ const Features = () => {
                             {feature.title}
                           </motion.h3>
                           <motion.p
-                            className="text-gray-300 text-sm"
+                            className="text-gray-300 text-sm text-start pl-8 pr-4"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.3, delay: 0.2 }}
@@ -250,21 +321,6 @@ const Features = () => {
                             {feature.description}
                           </motion.p>
                         </div>
-
-                        <motion.div
-                          className="mt-auto"
-                          initial={{ y: 10, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ duration: 0.3, delay: 0.3 }}
-                        >
-                          <button
-                            className="flex items-center gap-2 text-sm hover:text-white transition-colors"
-                            style={{ color: feature.primaryColor }}
-                          >
-                            Learn more
-                            <ChevronRight className="w-4 h-4" />
-                          </button>
-                        </motion.div>
                       </motion.div>
                     )}
                   </AnimatePresence>

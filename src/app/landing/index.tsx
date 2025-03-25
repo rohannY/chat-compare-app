@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import Navbar from "./Navbar";
-import Hero from "./Hero";
-import Features from "./Features";
-import AIFeatures from "./AIFeatures";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Hero from "./hero";
+import Features from "./features";
+import AIFeatures from "./features-2";
+import Footer from "./footer";
 
 const Index = () => {
   useEffect(() => {
@@ -30,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="dark:bg-black">
-      <div className="min-h-screen bg-background text-foreground font-geist p-[2rem] max-w-[1280px] mx-auto dark:bg-black/80 border-dotted border-[#11101014] dark:border-[#ffffff14] border-x-2 space-y-2">
+      <div className="min-h-screen bg-background text-foreground font-geist p-[2rem] max-w-[1280px] mx-auto dark:bg-black/80 border-dotted border-[#11101014] dark:border-[#ffffff14] border-x-2 space-y-2 font-Geist">
         <Navbar />
         <main className="pt-10">
           <Hero />

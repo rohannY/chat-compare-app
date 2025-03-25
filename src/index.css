@@ -8,8 +8,17 @@
   src: url("../public/fonts/Geist.woff2");
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("../public/fonts/Satoshi.ttf");
+}
+
 .font-geist {
   font-family: "Geist", sans-serif;
+}
+
+.font-geist {
+  font-family: "Satoshi", sans-serif;
 }
 
 /* Theme Variables */

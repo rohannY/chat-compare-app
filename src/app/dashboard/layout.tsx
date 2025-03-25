@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/custom/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +12,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Shortcut } from "./shortcut";
+import { Shortcut } from "../../components/custom/shortcut";
 import { ReactNode } from "react";
 
 export default function Page({ children }: { children: ReactNode }) {

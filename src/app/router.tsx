@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/docs",
     lazy: async () => {
-      const { default: AppShell } = await import("./dashboard/page");
+      const { default: AppShell } = await import("./dashboard/layout");
       const { Outlet } = await import("react-router-dom");
       return {
         Component: (props) => (
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => {
-          const { default: IntroComponent } = await import("./page/intro");
+          const { default: IntroComponent } = await import("./dashboard/intro/page");
           return {
             Component: (props) => <IntroComponent {...props} />,
           };
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         path: "/docs/chat",
         index: true,
         lazy: async () => {
-          const { default: ChatComponent } = await import("./page/chat");
+          const { default: ChatComponent } = await import("./dashboard/chat/page");
           return {
             Component: (props) => <ChatComponent {...props} />,
           };

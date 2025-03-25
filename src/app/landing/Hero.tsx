@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import AnimatedGradient from "@/components/AnimatedGradient";
+import AnimatedGradient from "@/components/custom/animated-gradient";
 import {
   Check,
   MessageSquare,
@@ -17,6 +17,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { BorderBeam } from "@/components/custom/border-beam";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -99,6 +100,11 @@ const Hero = () => {
       ref={sectionRef}
       className="relative overflow-hidden pt-20 bg-gradient-to-b from-slate-50 via-blue-50/30 to-white dark:bg-gradient-to-b dark:from-neutral-900 dark:via-neutral-800/30 dark:to-neutral-900 rounded-t-2xl dark:rounded-b-2xl"
     >
+      <BorderBeam
+        duration={20}
+        size={200}
+        className="from-transparent dark:via-gray-200 to-transparent via-green-600 dark:from-black dark:to-black"
+      />
       <motion.div className="absolute inset-0 opacity-60 dark:opacity-20">
         <motion.div
           style={{ x: x1, y: y1 }}

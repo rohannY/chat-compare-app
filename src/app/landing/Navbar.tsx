@@ -32,8 +32,8 @@ const Navbar = () => {
   const navItems = [
     { href: "#features", label: "Features" },
     { href: "#compare", label: "Compare" },
+    { href: "#footer", label: "Contact" },
     { href: "/docs", label: "Docs" },
-    { href: "#faq", label: "FAQ" },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <div className="flex items-center space-x-1 font-medium text-xl pl-10">
+          <div className="flex items-center space-x-1 font-medium text-xl">
             <img src={logo} className="w-6 h-6 text-primary" />
             <span className="font-semibold dark:text-white text-md font-inter">
               Compare
@@ -69,12 +69,7 @@ const Navbar = () => {
                 transition: { duration: 0.05 },
               }}
               whileTap={{ scale: 0.98 }}
-              className="relative 
-            text-gray-700 dark:text-gray-200
-            hover:text-primary 
-            px-3 py-1 rounded-md 
-            transition-all duration-300
-            hover:bg-gray-200/50 dark:hover:bg-white/10"
+              className="relative text-gray-700 dark:text-gray-200 hover:text-primary px-3 py-1 rounded-md transition-all duration-300 hover:bg-gray-200/50 dark:hover:bg-white/10"
             >
               {item.label}
             </motion.a>

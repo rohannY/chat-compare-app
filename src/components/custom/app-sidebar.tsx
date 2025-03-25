@@ -5,8 +5,8 @@ import {
   Bot,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
+import { NavMain } from "@/components/custom/nav-main";
+import { NavUser } from "@/components/custom/nav-user";
 import {
   Sidebar,
   SidebarContent,

@@ -13,7 +13,7 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import AnimatedGradient from "@/components/AnimatedGradient";
+import AnimatedGradient from "@/components/custom/animated-gradient";
 
 const AIFeatures = () => {
   const mouseX = useMotionValue(0);
@@ -157,10 +157,7 @@ const AIFeatures = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block dark:text-white">
-            Make Informed{" "}
-            <span className="border-b-4 border-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400">
-              AI Decisions
-            </span>
+            Make Informed AI Decisions
             <motion.span
               className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
               initial={{ width: 0 }}
@@ -223,13 +220,13 @@ const AIFeatures = () => {
                   whileHover={{ x: 5 }}
                 >
                   <motion.span
-                    className="flex-shrink-0 h-6 w-6 rounded-full bg-gradient-to-br from-rose-400 to-orange-300 flex items-center justify-center shadow-md mr-3"
+                    className="h-6 w-6 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center shadow-md mr-2"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 500 }}
                   >
                     {item.icon}
                   </motion.span>
-                  <span className="text-gray-700 dark:text-neutral-300">
+                  <span className="text-gray-700 dark:text-neutral-300 text-start">
                     {item.text}
                   </span>
                 </motion.li>
@@ -237,11 +234,7 @@ const AIFeatures = () => {
             </motion.ul>
 
             <motion.button
-              className="mt-8 flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r bg-black text-white font-medium"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 5px 15px rgba(66, 153, 225, 0.4)",
-              }}
+              className="mt-8 flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r bg-black text-white font-medium cursor-pointer hover:border border-[#4a5565a1] hover:shadow-2xl"
               whileTap={{ scale: 0.98 }}
               variants={itemVariants}
             >
@@ -258,7 +251,10 @@ const AIFeatures = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             onMouseMove={handleMouseMove}
           >
-            <AnimatedGradient className="absolute -inset-4 rounded-xl opacity-20 blur-2xl -z-10 dark:opacity-30" />
+            <AnimatedGradient
+              variant="cool"
+              className="absolute -inset-4 rounded-xl opacity-20 blur-2xl -z-10 dark:opacity-30"
+            />
 
             <motion.div
               className="glass-panel p-6 md:p-8 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-xl shadow-lg"
@@ -317,13 +313,13 @@ const AIFeatures = () => {
                         />
                         {model.name}
                       </div>
-                      <div className="col-span-1 text-gray-600">
+                      <div className="col-span-1 text-gray-400">
                         {model.bestFor[0]}
                       </div>
-                      <div className="col-span-1 text-gray-600">
+                      <div className="col-span-1 text-gray-400">
                         {model.strengths[0]}
                       </div>
-                      <div className="col-span-1 text-gray-600">
+                      <div className="col-span-1 text-gray-400">
                         {model.weaknesses[0]}
                       </div>
                       <div className="col-span-1">
@@ -357,21 +353,6 @@ const AIFeatures = () => {
                       </div>
                     </motion.div>
                   ))}
-
-                  <motion.div
-                    className="flex justify-end mt-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                  >
-                    <motion.button
-                      className="text-xs font-medium px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-700 flex items-center gap-1"
-                      whileHover={{ x: 3 }}
-                    >
-                      View full comparison
-                      <ChevronRight className="w-3 h-3" />
-                    </motion.button>
-                  </motion.div>
                 </motion.div>
               </AnimatePresence>
             </motion.div>
