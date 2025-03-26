@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Navbar from "./navbar";
 import Hero from "./hero";
 import Features from "./features";
-import AIFeatures from "./features-2";
 import Footer from "./footer";
 
 const Index = () => {
@@ -35,7 +34,6 @@ const Index = () => {
         <main className="pt-10">
           <Hero />
           <Features />
-          <AIFeatures />
         </main>
         <div className="m y-2">
           <Footer />
