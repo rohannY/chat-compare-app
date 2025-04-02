@@ -105,7 +105,7 @@ const Footer = () => {
                   >
                     <a
                       href="#"
-                      className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm inline-block"
+                      className="text-gray-600 dark:text-gray-300 dark:hover:text-[#fff] transition-colors text-sm inline-block"
                     >
                       {item}
                     </a>
@@ -136,7 +136,7 @@ const Footer = () => {
                   >
                     <a
                       href="#"
-                      className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm inline-block"
+                      className="text-gray-600 dark:text-gray-300 dark:hover:text-[#fff] transition-colors text-sm inline-block"
                     >
                       {item}
                     </a>
